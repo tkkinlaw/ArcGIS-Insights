@@ -15,6 +15,7 @@ flayer = gis.content.get('dede597f2fc54ae09b16508a0c70f62b').layers[0]
 
 fset = flayer.query()
 gjson = fset.to_geojson
+gdf = geopandas.read_file(gjson)
 
 for i in range(len(gdf['new_time'].array)):
     gdf['new_time'][i] = datetime.fromtimestamp(int(gdf['new_time'][i])/1000.0).strftime("%d-%B-%Y %H:%M:%S")
